@@ -1,4 +1,4 @@
-using Dominio;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,6 +11,31 @@ namespace Persistencia.Data.Configuration
             // Aquí puedes configurar las propiedades de la entidad Marca
             // utilizando el objeto 'builder'.
             builder.ToTable("FacturaVenta");
+
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id);
+
+            builder.Property(e => e.FechaFactura)
+            .HasColumnName("FechaFactura")
+            .HasColumnType("date")
+            .IsRequired();
+
+            builder.Property(e => e.PrecioTotal)
+            .HasColumnName("PrecioTotal")
+            .HasColumnType("int")
+            .IsRequired();
+
+            builder.HasOne(p => p.Persona)
+            .WithMany(p => p.FacturaVentas)
+            .HasForeignKey(p => p.PacienteIdFK);
+
+            builder.HasOne(p => p.Persona)
+            .WithMany(p => p.FacturaVentas)
+            .HasForeignKey(p => p.EmpleadoIdFK);
+
+            builder.HasOne(p => p.Receta)
+            .WithMany(p => p.FacturaVentas)
+            .HasForeignKey(p => p.RecetaIdFk);
         }
     }
 }

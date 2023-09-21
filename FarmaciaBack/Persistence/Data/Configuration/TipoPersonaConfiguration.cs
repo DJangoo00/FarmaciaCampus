@@ -1,12 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistence.Data.Configuration
+namespace Persistencia.Data.Configuration
 {
-    public class tipoPersonaConfiguration
+    public class TipoPersonaConfiguration : IEntityTypeConfiguration<TipoPersona>
     {
-        
+        public void Configure(EntityTypeBuilder<TipoPersona> builder)
+        {
+            // Aquí puedes configurar las propiedades de la entidad Marca
+            // utilizando el objeto 'builder'.
+            builder.ToTable("TipoPersona");
+
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id);
+
+            builder.Property(e => e.NombreTipoPersona)
+            .HasColumnName("tipoPersona")
+            .HasColumnType("varchar")
+            .HasMaxLength(20)
+            .IsRequired();
+        }
     }
 }

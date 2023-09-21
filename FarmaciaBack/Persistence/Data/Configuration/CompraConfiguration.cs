@@ -9,6 +9,18 @@ public class ComprasConfiguration : IEntityTypeConfiguration<Compra>
     {
         // Aquí puedes configurar las propiedades de la entidad Marca
         // utilizando el objeto 'builder'.
-        builder.ToTable("Compra");
+        builder.ToTable("compra");
+
+        builder.HasKey(e => e.Id);
+        builder.Property(e => e.Id);
+
+        builder.Property(e => e.FechaCompra)
+        .HasColumnName("FechaCompra")
+        .HasColumnType("date")
+        .IsRequired();
+
+        builder.HasOne(p => p.Persona)
+        .WithMany(p => p.Compras)
+        .HasForeignKey(p => p.ProvedorIdFk);
     }
 }
