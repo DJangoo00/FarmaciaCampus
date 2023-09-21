@@ -20,6 +20,7 @@ allDropdown.forEach(item=> {
 	})
 })
 // SIDEBAR COLLAPSE
+
 const toggleSidebar = document.querySelector('nav .toggle-sidebar');
 const allSideDivider = document.querySelectorAll('#sidebar .divider');
 if(sidebar.classList.contains('hide')) {
@@ -79,6 +80,8 @@ sidebar.addEventListener('mouseenter', function () {
 		})
 	}
 })
+
+
 // PROFILE DROPDOWN
 const profile = document.querySelector('nav .profile');
 const imgProfile = profile.querySelector('img');
