@@ -4,16 +4,65 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../Styles/login.css">
 	<link rel="stylesheet" href="../Styles/main.css">
-	<script src="../JS/home.js" async></script>
-	<script src="../JS/app.js" defer type="module"></script>
-	<title>Mi farmacia</title>
+	<title>Inicio de sesion</title>
 </head>
 <body>
-    <div class="container-fluid">
-        
+    <div class="">
+        <div class="login-row">
+			<div class="login">
+				<form class="login-form">
+					<div class="mb-3">
+						Inicio de sesión
+						
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Email address</label>
+						<input type="email" name="loginEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+						<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">Password</label>
+						<input type="password" name="loginPassword" class="password form-control" id="password">
+						<i class="bi bi-eye-slash" id="togglePassword"></i>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
     </div>
+	<script>
+		const $loginForm =  document.querySelector(".login-form");
+		const togglePassword = document.querySelector("#togglePassword");
+		const password = document.querySelector(".password");
+		
+
+	
+		togglePassword.addEventListener("click", function () {
+			// Toggle the type attribute
+			const type = password.getAttribute("type");
+			password.setAttribute("type", type === "password" ? "text" : "password"); // Toggle between "text" and "password"
+	
+			// Toggle the icon
+			this.classList.toggle("bi-eye");
+			this.classList.toggle("bi-eye-slash");
+		});
+	
+		// Prevent form submit
+		$loginForm.addEventListener('submit', function (e) {
+			e.preventDefault();
+
+			let loginEmail = $loginForm.loginEmail.value;
+			let loginPassword = $loginForm.loginEmail.value;
+			
+			// PENDING: GET ROLE FROM LOG IN. IF EMPLOYEE => EMPLOYEE SYSTEM.  ELSE => ADMIN SYTE
+			console.log(loginEmail, loginPassword)
+		});
+	</script>
+	
+	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

@@ -19,3 +19,62 @@
 	--dark-blue: #0C5FCD;
 	--red: #FC3B56;
 }
+
+.login-row {
+	margin: 50px 50px; /* Center the entire login-row horizontally */
+	display: flex;
+	justify-content: center; /* Center the content horizontally */
+	align-items: center; /* Center the content vertically */
+	padding: 20px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+}  
+.login {
+	display: block;
+}
+
+.login form label {
+	font-weight: bold;
+}
+
+.login-form {
+	display: inline-block;
+	text-align: center; /* Center the content inside the form horizontally */
+}  
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+
+
+/* 
+.login-row{
+	margin: 50px 50px;
+	display:flex;
+	flex-grow: 1;
+	flex-basis: auto;
+	padding: 20px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+.login{
+	display: block;
+	
+}
+
+.login form label{
+	font-weight: bold;
+}
+
+.login-form{
+	display: inline-block;
+	justify-content: center;
+}
+
+
+*/
