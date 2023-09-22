@@ -5,8 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="../Styles/main.css">
-	<script src="../JS/main.js" async></script>
-	<script src="../JS/app.js" defer type="module"></script>
+	<script src="../JS/main.js" type="module" defer></script>
 	<title>AdminSite</title>
 </head>
 <body>
@@ -29,8 +28,13 @@
 				</ul>
 			</li>
 
-			<li class="divider" data-text="table and forms">Table and forms</li>
-			<li><a href="#"><i class='bx bx-table icon' ></i> Tables</a></li>
+			<li class="divider" data-text="Operaciones">Operaciones</li>
+			<li class="ventaBtn">
+				<a href="#">
+					<i class='bx bx-table icon' ></i>
+					Venta
+				</a>
+			</li>
 			<li>
 				<a href="#"><i class='bx bxs-notepad icon' ></i> Forms <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
@@ -67,11 +71,11 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title page-title">Dashboard</h1>
 			<ul class="breadcrumbs">
-				<li><a href="../Views/home.html">Home</a></li>
+				<li><a href="../Views/home.html" class="root-value">Home</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">Dashboard</a></li>
+				<li><a href="#" class="active root-section">Dashboard</a></li>
 			</ul>
 			<div class="info-data">
 				<div class="card">

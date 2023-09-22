@@ -1,6 +1,20 @@
+import {allDropdown,
+	sidebar,
+	toggleSidebar,
+	allSideDivider,
+	profile,
+	imgProfile,
+	dropdownProfile,
+	allMenu,
+	allProgress,
+	$sellsBtn,
+	$pageTitle,
+	$rootValue,
+	$rootSection
+} from "../js/domVars.js"
+
 // SIDEBAR DROPDOWN
-const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
-const sidebar = document.getElementById('sidebar');
+
 allDropdown.forEach(item=> {
 	const a = item.parentElement.querySelector('a:first-child');
 	a.addEventListener('click', function (e) {
@@ -21,8 +35,7 @@ allDropdown.forEach(item=> {
 })
 // SIDEBAR COLLAPSE
 
-const toggleSidebar = document.querySelector('nav .toggle-sidebar');
-const allSideDivider = document.querySelectorAll('#sidebar .divider');
+
 if(sidebar.classList.contains('hide')) {
 	allSideDivider.forEach(item=> {
 		item.textContent = '-'
@@ -83,14 +96,12 @@ sidebar.addEventListener('mouseenter', function () {
 
 
 // PROFILE DROPDOWN
-const profile = document.querySelector('nav .profile');
-const imgProfile = profile.querySelector('img');
-const dropdownProfile = profile.querySelector('.profile-link');
+
 imgProfile.addEventListener('click', function () {
 	dropdownProfile.classList.toggle('show');
 })
 // MENU
-const allMenu = document.querySelectorAll('main .content-data .head .menu');
+
 allMenu.forEach(item=> {
 	const icon = item.querySelector('.icon');
 	const menuLink = item.querySelector('.menu-link');
@@ -122,7 +133,16 @@ window.addEventListener('click', function (e) {
 	})
 })
 // PROGRESSBAR
-const allProgress = document.querySelectorAll('main .card .progress');
+
 allProgress.forEach(item=> {
 	item.style.setProperty('--value', item.dataset.value)
 })
+
+// Sell medicine
+$sellsBtn.addEventListener("click", function(e){
+	const pageValue  = e.target.childNodes[2].textContent; // Get the text content of the clicked element
+
+	$pageTitle.textContent = pageValue; // Change the text content of $pageTitle
+	$rootSection.textContent = pageValue; // Change the text content of $rootSection
+})
+
