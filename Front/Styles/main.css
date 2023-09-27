@@ -420,6 +420,7 @@ main .data .content-data {
 	background: var(--light);
 	border-radius: 10px;
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	justify-content: center;
 }
 main .content-data .head {
 	display: flex;
@@ -590,7 +591,7 @@ main .info-data .option-btn{
 main .info-data .option-btn:hover {
 	transition: .2s;
 	cursor: pointer;
-	transform: scale(1.05);
+	transform: scale(1.03);
 }
 
 main .info-data .option-btn .icon{
@@ -598,9 +599,30 @@ main .info-data .option-btn .icon{
 	color: var(--dark-blue);
 	
 }
+main .info-data .option-btn .text{
+	text-transform: capitalize;
+}
 
 
+main .info-data .item {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	border-radius: 10px;
+	background: var(--light-blue);
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
+}
 
+main .info-data .item .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+main .info-data .item .medicine-title-row{
+	display: flex;
+	justify-content: center;
+}
 
 
 @media screen and (max-width: 768px) {

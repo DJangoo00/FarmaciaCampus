@@ -12,3 +12,4 @@ export const $sellsBtn = document.querySelector(".ventaBtn")
 export const $pageTitle = document.querySelector(".page-title")
 export const $rootValue = document.querySelector(".root-value")
 export const $rootSection = document.querySelector(".root-section")
+export const serviceButtons = document.querySelectorAll("main .info-data .option-btn");

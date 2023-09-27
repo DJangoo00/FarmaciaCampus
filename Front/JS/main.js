@@ -10,7 +10,8 @@ import {allDropdown,
 	$sellsBtn,
 	$pageTitle,
 	$rootValue,
-	$rootSection
+	$rootSection,
+	serviceButtons
 } from "../js/domVars.js"
 
 // SIDEBAR DROPDOWN
@@ -145,4 +146,24 @@ $sellsBtn.addEventListener("click", function(e){
 	$pageTitle.textContent = pageValue; // Change the text content of $pageTitle
 	$rootSection.textContent = pageValue; // Change the text content of $rootSection
 })
+
+//Buttons
+
+serviceButtons.forEach((button) => {
+	button.addEventListener("click", function (e) {
+	 	 // Check the id or other attributes to determine which button was clicked
+		const buttonId = e.target.id;
+	  	// Perform different actions based on the clicked button
+		if (buttonId === "search-button") {
+			// Code for the "Buscar Medicamento" button
+			console.log("Buscar Medicamento button clicked");
+		} else if (buttonId === "show-button") {
+			// Code for the "Mostrar Medicamentos" button
+			console.log("Mostrar Medicamentos button clicked");
+		} else if (buttonId === "add-button") {
+			// Code for the "Añadir Medicamento" button
+			console.log("Añadir Medicamento button clicked");
+		}
+	});
+});
 
