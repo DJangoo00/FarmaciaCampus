@@ -16,7 +16,7 @@ import {allDropdown,
 	$dataTitle,
 	$infoData,
 
-} from "../js/domVars.js"
+} from "../JS/domVars.js"
 
 // SIDEBAR DROPDOWN
 
