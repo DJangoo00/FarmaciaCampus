@@ -11,7 +11,11 @@ import {allDropdown,
 	$pageTitle,
 	$rootValue,
 	$rootSection,
-	serviceButtons
+	serviceButtons,
+	$dataContainer,
+	$dataTitle,
+	$infoData,
+
 } from "../js/domVars.js"
 
 // SIDEBAR DROPDOWN
@@ -151,19 +155,57 @@ $sellsBtn.addEventListener("click", function(e){
 
 serviceButtons.forEach((button) => {
 	button.addEventListener("click", function (e) {
-	 	 // Check the id or other attributes to determine which button was clicked
-		const buttonId = e.target.id;
-	  	// Perform different actions based on the clicked button
-		if (buttonId === "search-button") {
-			// Code for the "Buscar Medicamento" button
-			console.log("Buscar Medicamento button clicked");
-		} else if (buttonId === "show-button") {
-			// Code for the "Mostrar Medicamentos" button
-			console.log("Mostrar Medicamentos button clicked");
-		} else if (buttonId === "add-button") {
-			// Code for the "Añadir Medicamento" button
-			console.log("Añadir Medicamento button clicked");
-		}
+	  // Check the id or other attributes to determine which button was clicked
+	  const buttonId = button.id;
+  
+	  // Reset the info-data when any button is clicked
+	  $infoData.innerHTML = "";
+  
+	  if (buttonId === "search-button") {
+		// Code for the "Buscar Medicamento" button
+		console.log("Buscar Medicamento button clicked");
+		$dataTitle.textContent = "Buscar Medicamento";
+	  } else if (buttonId === "show-button") {
+		// Code for the "Mostrar Medicamentos" button
+		console.log("Mostrar Medicamentos button clicked");
+		$dataTitle.textContent = "Mostrar Medicamentos";
+  
+		// Insert the data structure for "Show" button
+		const dataStructure = `
+		  <div class="item card">
+			<div class="medicine-title-row">
+			  <h4 class="medicine-title">Penicilina</h4>
+			</div>
+			<div class="info-row id-row">
+			  <span class="label">ID</span>
+			  <span class="value">123</span>
+			</div>
+			<div class="info-row stock-row">
+			  <span class="label">Stock</span>
+			  <span class="value">50</span>
+			</div>
+			<div class="info-row provider-row">
+			  <span class="label">Proveedor</span>
+			  <span class="value">Juan Roa</span>
+			</div>
+			<div class="info-row price-row">
+			  <span class="label">Precio Unitario</span>
+			  <span class="value">$50.000</span>
+			</div>
+		  </div>
+		`;
+  
+		// Insert the data structure into info-data
+		$infoData.insertAdjacentHTML("beforeend", dataStructure);
+	  } else if (buttonId === "add-button") {
+		// Code for the "Añadir Medicamento" button
+		console.log("Añadir Medicamento button clicked");
+		$dataTitle.textContent = "Añadir Medicamento";
+	  }
+  
+	  // Prevent event propagation
+	  e.stopPropagation();
 	});
-});
+  });
 
+//FILTER MENU 

@@ -4,7 +4,6 @@
 6. Medicamentos que caducan antes del 1 de enero de 2024.
 10. Obtener el medicamento más caro.
 38. Medicamentos con un precio mayor a 50 y un stock menor a 100.
-29. Proveedores de los medicamentos con menos de 50 unidades en stock.
 19. Obtener todos los medicamentos que expiren en 2024.
 
 Nombre
@@ -22,7 +21,7 @@ Precio Unitario
 7. Total de medicamentos vendidos por cada proveedor.
 11. Número de medicamentos por proveedor.
 13. Proveedores que no han vendido medicamentos en el último año.
-
+29. Proveedores de los medicamentos con menos de 50 unidades en stock.
 24. Proveedor que ha suministrado más medicamentos en 2023.
 28. Número total de proveedores que suministraron medicamentos en 2023.
 35. Proveedores que han suministrado al menos 5 medicamentos diferentes en 2023.

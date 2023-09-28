@@ -581,17 +581,32 @@ main .btn-send:hover {
 /* MAIN */
 /* CONTENT */
 
-main .info-data .option-btn{
+
+
+main .info-data .option-btn, #filter-button{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	transition: .2s;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
 }
-main .info-data .option-btn:hover {
+main .info-data .option-btn:hover,#filter-button:hover {
 	transition: .2s;
 	cursor: pointer;
 	transform: scale(1.03);
+}
+
+#filter-button{
+	background-color: var(--dark-grey);
+	border-radius: 10px;
+	width: 100px;
+	height: 100px;
+}
+
+#filter-button:hover{
+	transform: scale(1.005);
+	transition: .2s;
 }
 
 main .info-data .option-btn .icon{
@@ -624,6 +639,7 @@ main .info-data .item .medicine-title-row{
 	justify-content: center;
 }
 
+/*FILTER BUTTON*/
 
 @media screen and (max-width: 768px) {
 	#content {
