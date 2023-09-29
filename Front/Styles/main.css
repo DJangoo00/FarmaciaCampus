@@ -602,6 +602,7 @@ main .info-data .option-btn:hover,#filter-button:hover {
 	border-radius: 10px;
 	width: 100px;
 	height: 100px;
+	margin: 10px;
 }
 
 #filter-button:hover{
@@ -640,6 +641,34 @@ main .info-data .item .medicine-title-row{
 }
 
 /*FILTER BUTTON*/
+
+.filters-box{
+	background-color: var(--dark-grey);
+	border-radius: 10px;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.filter-option{
+	background-color: var(--dark-blue);
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.filter-option:hover{
+	transform: scale(1.03);
+	transition: .2s;
+}
 
 @media screen and (max-width: 768px) {
 	#content {

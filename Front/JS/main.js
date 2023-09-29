@@ -15,6 +15,7 @@ import {allDropdown,
 	$dataContainer,
 	$dataTitle,
 	$infoData,
+	$filtersButton,
 
 } from "../JS/domVars.js"
 
@@ -204,8 +205,11 @@ serviceButtons.forEach((button) => {
 	  }
   
 	  // Prevent event propagation
-	  e.stopPropagation();
+	e.stopPropagation();
 	});
   });
 
 //FILTER MENU 
+$filtersButton.addEventListener("click", function(e){
+	console.log("mamaguebo")
+})
