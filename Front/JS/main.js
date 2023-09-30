@@ -16,8 +16,11 @@ import {allDropdown,
 	$dataTitle,
 	$infoData,
 	$filtersButton,
+	$titleDiv,
 
 } from "../JS/domVars.js"
+
+
 
 // SIDEBAR DROPDOWN
 
@@ -170,46 +173,107 @@ serviceButtons.forEach((button) => {
 		// Code for the "Mostrar Medicamentos" button
 		console.log("Mostrar Medicamentos button clicked");
 		$dataTitle.textContent = "Mostrar Medicamentos";
-  
+
+		const existingFiltersContainer = document.getElementById("filters-container");
+		if (existingFiltersContainer) {
+			// If it exists, remove it from the DOM
+			existingFiltersContainer.remove();
+		}
+		
+		const newFiltersContainer = document.createElement("div");
+		newFiltersContainer.id = "filters-container";
 		// Insert the data structure for "Show" button
+		const filtersStructure = `
+
+	<div id="filter-button" class="filter-button">
+		<div class="icon">
+			<i class='bx bx-filter'></i>
+		</div>
+		<div class="text">Filtros</div>
+	</div>
+	
+	<div class="filters-box option-btn">                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Por stock</div>
+		</div>                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Por proveedor</div>
+		</div>                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Caducan antes de</div>
+		</div>                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Medicamento más caro</div>
+		</div>                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Precio mayor &<br>stock menor que</div>
+		</div>                 
+		<div class="card option-btn filter-option">
+			<div class="icon">
+				<i class='bx bx-filter'></i>
+			</div>
+			<div class="text">Caducan en el año</div>
+		</div>
+
+	</div>
+		`;
+		newFiltersContainer.innerHTML = filtersStructure;
+
 		const dataStructure = `
-		  <div class="item card">
+		<div class="item card">
 			<div class="medicine-title-row">
-			  <h4 class="medicine-title">Penicilina</h4>
+				<h4 class="medicine-title">Penicilina</h4>
 			</div>
 			<div class="info-row id-row">
-			  <span class="label">ID</span>
-			  <span class="value">123</span>
+				<span class="label">ID</span>
+				<span class="value">123</span>
 			</div>
 			<div class="info-row stock-row">
-			  <span class="label">Stock</span>
-			  <span class="value">50</span>
+				<span class="label">Stock</span>
+				<span class="value">50</span>
 			</div>
 			<div class="info-row provider-row">
-			  <span class="label">Proveedor</span>
-			  <span class="value">Juan Roa</span>
+				<span class="label">Proveedor</span>
+				<span class="value">Juan Roa</span>
 			</div>
 			<div class="info-row price-row">
-			  <span class="label">Precio Unitario</span>
-			  <span class="value">$50.000</span>
+				<span class="label">Precio Unitario</span>
+				<span class="value">$50.000</span>
 			</div>
-		  </div>
+		</div>
 		`;
-  
+		//bruh
+
+		$titleDiv.insertAdjacentElement("afterend",newFiltersContainer);
 		// Insert the data structure into info-data
 		$infoData.insertAdjacentHTML("beforeend", dataStructure);
-	  } else if (buttonId === "add-button") {
+	} else if (buttonId === "add-button") {
 		// Code for the "Añadir Medicamento" button
 		console.log("Añadir Medicamento button clicked");
 		$dataTitle.textContent = "Añadir Medicamento";
-	  }
-  
+	}
+
 	  // Prevent event propagation
 	e.stopPropagation();
 	});
-  });
+});
 
 //FILTER MENU 
-$filtersButton.addEventListener("click", function(e){
+/*$filtersButton.addEventListener("click", function(e){
 	console.log("mamaguebo")
-})
+})*/

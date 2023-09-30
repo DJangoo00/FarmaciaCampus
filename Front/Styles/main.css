@@ -583,32 +583,33 @@ main .btn-send:hover {
 
 
 
-main .info-data .option-btn, #filter-button{
+main .info-data .option-btn, .filter-button{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	transition: .2s;
+	transition: .1s;
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
 }
-main .info-data .option-btn:hover,#filter-button:hover {
-	transition: .2s;
+main .info-data .option-btn:hover,.filter-button:hover {
+	transition: .1s;
 	cursor: pointer;
 	transform: scale(1.03);
 }
 
-#filter-button{
+.filter-button{
 	background-color: var(--dark-grey);
 	border-radius: 10px;
 	width: 100px;
 	height: 100px;
-	margin: 10px;
+	font-weight: bold;
 }
 
-#filter-button:hover{
+.filter-button:hover{
 	transform: scale(1.005);
-	transition: .2s;
+	transition: .1s;
 }
+
 
 main .info-data .option-btn .icon{
 	font-size: 30px;
@@ -645,16 +646,18 @@ main .info-data .item .medicine-title-row{
 .filters-box{
 	background-color: var(--dark-grey);
 	border-radius: 10px;
-	margin: 10px;
-	display: flex;
-	align-items: center;
+	margin: 10px 0;
 	padding: 10px;
+	margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 20px;
 }
 
 .filter-option{
-	background-color: var(--dark-blue);
+	background-color: var(--grey);
 	border-radius: 10px;
-	margin: 10px;
+	margin: 10px 0;
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
 	display: flex;
 	flex-direction: column;
@@ -662,12 +665,17 @@ main .info-data .item .medicine-title-row{
 	justify-content: center;
 	padding: 20px;
 	cursor: pointer;
-	transition: .2s;
+	transition: .1s;
+	
 }
 
 .filter-option:hover{
 	transform: scale(1.03);
-	transition: .2s;
+	transition: .1s;
+}
+
+.filters-box .filter-option .text{
+	text-align: center;
 }
 
 @media screen and (max-width: 768px) {
