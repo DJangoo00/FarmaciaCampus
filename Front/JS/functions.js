@@ -59,7 +59,7 @@ export function getAllMedicine(){
     .then((data) => {
         data.forEach(e => {
             let $itemCard = document.createElement("div");
-            $itemCard.setAttribute("class","item card")
+
 
             $itemCard.innerHTML=`
             <div class="item card">
@@ -107,7 +107,7 @@ export function showMedicineByStock(){
     .then((data) => {
         data.forEach(e => {
             let $itemCard = document.createElement("div");
-            $itemCard.setAttribute("class","item card")
+
 
             $itemCard.innerHTML=`
             <div class="item card">
@@ -141,12 +141,101 @@ export function showMedicineByStock(){
 }
 
 export function showMedicineByProvider(){
+    fetch(`http://localhost:5013/api/farmacia/Medicamento/ByProveedorName?proveedor=juan`)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        data.forEach(e => {
+            let $itemCard = document.createElement("div");
 
+            $itemCard.innerHTML=`
+            <div class="item card">
+			<div class="medicine-title-row">
+				<h4 class="medicine-title">${e.nombre}</h4>
+			</div>
+			<div class="info-row id-row">
+				<span class="label">ID</span>
+				<span class="value">${e.id}</span>
+			</div>
+			<div class="info-row stock-row">
+				<span class="label">Stock</span>
+				<span class="value">${e.stock}</span>
+			</div>
+			<div class="info-row provider-row">
+				<span class="label">Proveedor</span>
+				<span class="value">${e.persona.nombre}</span>
+			</div>
+			<div class="info-row price-row">
+				<span class="label">Precio Unitario</span>
+				<span class="value">${"$"+e.precio}</span>
+			</div>
+            <div class="info-row expiration-row">
+            <span class="label">Fecha. Exp</span>
+            <span class="value">${"$"+e.fechaExpiracion}</span>
+        </div>
+		</div>
+            `;
+            $infoData.appendChild($itemCard)
+        });
+    })
+    .catch((error) => {
+        console.error('Fetch error:', error);
+    });
 }
 
 export function showMedicineByExpiresBefore(){
 
+    fetch(`http://localhost:5013/api/farmacia/Medicamento/AfterDueDate?date=2024-10-10
+    `)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        data.forEach(e => {
+            let $itemCard = document.createElement("div");
+    
+            $itemCard.innerHTML=`
+            <div class="item card">
+            <div class="medicine-title-row">
+                <h4 class="medicine-title">${e.nombre}</h4>
+            </div>
+            <div class="info-row id-row">
+                <span class="label">ID</span>
+                <span class="value">${e.id}</span>
+            </div>
+            <div class="info-row stock-row">
+                <span class="label">Stock</span>
+                <span class="value">${e.stock}</span>
+            </div>
+            <div class="info-row price-row">
+            <span class="label">Precio Unitario</span>
+            <span class="value">${"$"+e.precio}</span>
+        </div>
+            <div class="info-row provider-row">
+                <span class="label">Proveedor</span>
+                <span class="value">?</span>
+            </div>
+            <div class="info-row expiration-row">
+            <span class="label">Fecha. Exp</span>
+            <span class="value">${"$"+e.fechaExpiracion}</span>
+        </div>
+        </div>
+            `;
+            $infoData.appendChild($itemCard)
+        });
+    })
+    .catch((error) => {
+        console.error('Fetch error:', error);
+    });
 }
+
 
 export function getMostExpensive(){
 
@@ -159,10 +248,9 @@ export function getMostExpensive(){
     })
     .then((data) => {
         let $itemCard = document.createElement("div");
-        $itemCard.setAttribute("class","item card")
 
         $itemCard.innerHTML=`
-        <h3>Medicamento más caro</h3>
+        <h2>Medicamento más caro</h2>
         <div class="item card">
         <div class="medicine-title-row">
             <h4 class="medicine-title">${data.nombre}</h4>
@@ -194,10 +282,93 @@ export function getMostExpensive(){
 
 export function showMedicineByPriceStock(){
 
+fetch(`http://localhost:5013/api/farmacia/Medicamento/GetHighherPriceAndUnderStock?price=50&stock=100`)
+.then((response) => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then((data) => {
+    data.forEach(e => {
+        let $itemCard = document.createElement("div");
+
+        $itemCard.innerHTML=`
+        <div class="item card">
+        <div class="medicine-title-row">
+            <h4 class="medicine-title">${e.nombre}</h4>
+        </div>
+        <div class="info-row id-row">
+            <span class="label">ID</span>
+            <span class="value">${e.id}</span>
+        </div>
+        <div class="info-row stock-row">
+            <span class="label">Stock</span>
+            <span class="value">${e.stock}</span>
+        </div>
+        <div class="info-row price-row">
+        <span class="label">Precio Unitario</span>
+        <span class="value">${"$"+e.precio}</span>
+    </div>
+        <div class="info-row provider-row">
+            <span class="label">Proveedor</span>
+            <span class="value">?</span>
+        </div>
+        <div class="info-row expiration-row">
+        <span class="label">Fecha. Exp</span>
+        <span class="value">${"$"+e.fechaExpiracion}</span>
+    </div>
+    </div>
+        `;
+        $infoData.appendChild($itemCard)
+    });
+})
+.catch((error) => {
+    console.error('Fetch error:', error);
+});
 }
 
 export function showMedicineByExpirationYear(){
+    fetch(`http://localhost:5013/api/farmacia/Medicamento/GetExpireYear?year=2024`)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        data.forEach(e => {
+            let $itemCard = document.createElement("div");
 
+            $itemCard.innerHTML=`
+            <div class="item card">
+			<div class="medicine-title-row">
+				<h4 class="medicine-title">${e.nombre}</h4>
+			</div>
+			<div class="info-row id-row">
+				<span class="label">ID</span>
+				<span class="value">${e.id}</span>
+			</div>
+			<div class="info-row stock-row">
+				<span class="label">Stock</span>
+				<span class="value">${e.stock}</span>
+			</div>
+			<div class="info-row provider-row">
+				<span class="label">Proveedor</span>
+				<span class="value">?</span>
+			</div>
+            <div class="info-row expiration-row">
+            <span class="label">Fecha. Exp</span>
+            <span class="value">${"$"+e.fechaExpiracion}</span>
+        </div>
+		</div>
+            `;
+            $infoData.appendChild($itemCard)
+        });
+    })
+    .catch((error) => {
+        console.error('Fetch error:', error);
+    });
 }
 
 //*******************MedicineQuerys

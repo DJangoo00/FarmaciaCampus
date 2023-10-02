@@ -181,7 +181,7 @@ serviceButtons.forEach((button) => {
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
-			<div class="text">Por stock</div>
+			<div class="text">Por stock<br><b><i>(menor 50)</i></b></div>
 		</div>                 
 		<div class="card option-btn filter-option" queryAction="getMedicineByProvider">
 			<div class="icon">
@@ -193,7 +193,7 @@ serviceButtons.forEach((button) => {
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
-			<div class="text">Caducan antes de</div>
+			<div class="text">Caducan antes de<br><b><i>(2024-10-10)</i></b></div>
 		</div>                 
 		<div class="card option-btn filter-option" queryAction="getMedicineByMostExpensive">
 			<div class="icon">
@@ -205,13 +205,13 @@ serviceButtons.forEach((button) => {
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
-			<div class="text">Precio mayor &<br>stock menor que</div>
+			<div class="text">Precio mayor <b><i>50</i></b> &<br>stock menor que <b><i>100</i></b></div>
 		</div>                 
 		<div class="card option-btn filter-option" queryAction="getMedicineByExpirationYear">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
-			<div class="text">Caducan en el año</div>
+			<div class="text">Caducan en el año<br><b><i>2024</i></b></div>
 		</div>
 
 	</div>
@@ -243,6 +243,7 @@ document.addEventListener("click", function (e) {
 });
 
 document.addEventListener('click', function (e) {
+	e.stopPropagation();
     const target = e.target;
 
     if (target.classList.contains('filter-option')) {
