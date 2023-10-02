@@ -1,26 +1,6 @@
-import {allDropdown,
-	sidebar,
-	toggleSidebar,
-	allSideDivider,
-	profile,
-	imgProfile,
-	dropdownProfile,
-	allMenu,
-	allProgress,
-	$sellsBtn,
-	$pageTitle,
-	$rootValue,
-	$rootSection,
-	serviceButtons,
-	$dataContainer,
-	$dataTitle,
-	$infoData,
-	$filtersButton,
-	$titleDiv,
+import {allDropdown, sidebar, toggleSidebar, allSideDivider, profile, imgProfile, dropdownProfile, allMenu, allProgress, $sellsBtn, $pageTitle, $rootValue, $rootSection, serviceButtons, $dataContainer, $dataTitle, $infoData, $filtersButton, $titleDiv,} from "../JS/domVars.js"
 
-} from "../JS/domVars.js"
-
-import {hideFiltersContainer, resetDataDiv, showFiltersContainer} from "../JS/functions.js"
+import {getAllMedicine, getMostExpensive, hideFiltersContainer, resetDataDiv, resetDiv, showFiltersContainer, showMedicineByExpirationYear, showMedicineByExpiresBefore, showMedicineByPriceStock, showMedicineByProvider, showMedicineByStock} from "../JS/functions.js"
 
 
 
@@ -173,8 +153,10 @@ serviceButtons.forEach((button) => {
 
 		} else if (buttonId === "show-button") {
 		// Code for the "Mostrar Medicamentos" button
+		
 		showFiltersContainer();
 		$dataTitle.textContent = "Mostrar Medicamentos";
+		resetDiv($infoData);
 
 		const existingFiltersContainer = document.getElementById("filters-container");
 		if (existingFiltersContainer) {
@@ -195,37 +177,37 @@ serviceButtons.forEach((button) => {
 	</div>
 	
 	<div class="filters-box option-btn">                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByStock">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
 			<div class="text">Por stock</div>
 		</div>                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByProvider">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
 			<div class="text">Por proveedor</div>
 		</div>                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByExpiresBefore">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
 			<div class="text">Caducan antes de</div>
 		</div>                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByMostExpensive">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
 			<div class="text">Medicamento más caro</div>
 		</div>                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByPriceStock">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
 			<div class="text">Precio mayor &<br>stock menor que</div>
 		</div>                 
-		<div class="card option-btn filter-option">
+		<div class="card option-btn filter-option" queryAction="getMedicineByExpirationYear">
 			<div class="icon">
 				<i class='bx bx-filter'></i>
 			</div>
@@ -236,34 +218,8 @@ serviceButtons.forEach((button) => {
 		`;
 		newFiltersContainer.innerHTML = filtersStructure;
 
-		const dataStructure = `
-		<div class="item card">
-			<div class="medicine-title-row">
-				<h4 class="medicine-title">Penicilina</h4>
-			</div>
-			<div class="info-row id-row">
-				<span class="label">ID</span>
-				<span class="value">123</span>
-			</div>
-			<div class="info-row stock-row">
-				<span class="label">Stock</span>
-				<span class="value">50</span>
-			</div>
-			<div class="info-row provider-row">
-				<span class="label">Proveedor</span>
-				<span class="value">Juan Roa</span>
-			</div>
-			<div class="info-row price-row">
-				<span class="label">Precio Unitario</span>
-				<span class="value">$50.000</span>
-			</div>
-		</div>
-		`;
-		//bruh
-
 		$titleDiv.insertAdjacentElement("afterend",newFiltersContainer);
-		// Insert the data structure into info-data
-		$infoData.insertAdjacentHTML("beforeend", dataStructure);
+		getAllMedicine();
 	} else if (buttonId === "add-button") {
 		// Code for the "Añadir Medicamento" button
 		hideFiltersContainer()
@@ -275,11 +231,6 @@ serviceButtons.forEach((button) => {
 	});
 });
 
-
-
-
-
-
 //FILTER MENU 
 document.addEventListener("click", function (e) {
     if (e.target.id === "filter-button") {
@@ -287,6 +238,50 @@ document.addEventListener("click", function (e) {
         const filtersBox = document.querySelector(".filters-box");
         if (filtersBox) {
             filtersBox.classList.toggle("hidden");
+        }
+    }
+});
+
+document.addEventListener('click', function (e) {
+    const target = e.target;
+
+    if (target.classList.contains('filter-option')) {
+        // Check if the clicked element has the 'filter-option' class
+        const queryAction = target.getAttribute('queryAction');
+
+        // Handle the filter action based on the queryAction attribute
+        switch (queryAction) {
+            case 'getMedicineByStock':
+				resetDiv($infoData)
+				showMedicineByStock();
+                break;
+
+            case 'getMedicineByProvider':
+				resetDiv($infoData)
+				showMedicineByProvider();
+                break;
+
+            case 'getMedicineByExpiresBefore':
+				resetDiv($infoData);
+				showMedicineByExpiresBefore();
+                break;
+            case 'getMedicineByMostExpensive':
+				resetDiv($infoData);
+				getMostExpensive();
+                break;
+            case 'getMedicineByPriceStock':
+				resetDiv($infoData)
+				showMedicineByPriceStock();
+                break;
+            case 'getMedicineByExpirationYear':
+				resetDiv($infoData)
+				showMedicineByExpirationYear();
+                break;
+
+            default:
+                console.log('Unknown filter clicked');
+                // Handle unknown filter actions or provide a default behavior
+                break;
         }
     }
 });

@@ -19,3 +19,4 @@ export const $infoData = document.querySelector(".data .info-data");
 export const $filtersButton = document.querySelector("filter-button") ;
 export const $filterMenu = document.querySelector(".filters-box");
 export const $titleDiv = document.querySelector(".content-data .head");
+//export const $filterButtons = document.querySelectorAll('.filter-option');
