@@ -20,6 +20,8 @@ import {allDropdown,
 
 } from "../JS/domVars.js"
 
+import {hideFiltersContainer, resetDataDiv, showFiltersContainer} from "../JS/functions.js"
+
 
 
 // SIDEBAR DROPDOWN
@@ -158,20 +160,20 @@ $sellsBtn.addEventListener("click", function(e){
 //Buttons
 
 serviceButtons.forEach((button) => {
-	button.addEventListener("click", function (e) {
+	button.addEventListener("click", async function (e) {
 	  // Check the id or other attributes to determine which button was clicked
-	  const buttonId = button.id;
-  
+	const buttonId = button.id;
 	  // Reset the info-data when any button is clicked
-	  $infoData.innerHTML = "";
-  
-	  if (buttonId === "search-button") {
+	$infoData.innerHTML = "";
+
+	if (buttonId === "search-button") {
 		// Code for the "Buscar Medicamento" button
-		console.log("Buscar Medicamento button clicked");
+		hideFiltersContainer();
 		$dataTitle.textContent = "Buscar Medicamento";
-	  } else if (buttonId === "show-button") {
+
+		} else if (buttonId === "show-button") {
 		// Code for the "Mostrar Medicamentos" button
-		console.log("Mostrar Medicamentos button clicked");
+		showFiltersContainer();
 		$dataTitle.textContent = "Mostrar Medicamentos";
 
 		const existingFiltersContainer = document.getElementById("filters-container");
@@ -264,7 +266,7 @@ serviceButtons.forEach((button) => {
 		$infoData.insertAdjacentHTML("beforeend", dataStructure);
 	} else if (buttonId === "add-button") {
 		// Code for the "Añadir Medicamento" button
-		console.log("Añadir Medicamento button clicked");
+		hideFiltersContainer()
 		$dataTitle.textContent = "Añadir Medicamento";
 	}
 
@@ -273,7 +275,18 @@ serviceButtons.forEach((button) => {
 	});
 });
 
+
+
+
+
+
 //FILTER MENU 
-/*$filtersButton.addEventListener("click", function(e){
-	console.log("mamaguebo")
-})*/
+document.addEventListener("click", function (e) {
+    if (e.target.id === "filter-button") {
+        // Toggle the visibility of the .filters-box element
+        const filtersBox = document.querySelector(".filters-box");
+        if (filtersBox) {
+            filtersBox.classList.toggle("hidden");
+        }
+    }
+});

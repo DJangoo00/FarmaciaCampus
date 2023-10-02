@@ -16,6 +16,6 @@ export const serviceButtons = document.querySelectorAll("main .info-data .option
 export const $dataContainer = document.querySelector(".content-data");
 export const $dataTitle = document.querySelector(".data .content-data .head h3");
 export const $infoData = document.querySelector(".data .info-data");
-export const $filtersButton = document.querySelector(".filter-button") ;
+export const $filtersButton = document.querySelector("filter-button") ;
 export const $filterMenu = document.querySelector(".filters-box");
 export const $titleDiv = document.querySelector(".content-data .head");

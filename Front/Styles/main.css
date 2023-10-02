@@ -689,3 +689,7 @@ main .info-data .item .medicine-title-row{
 		display: none;
 	}
 }
+
+.hidden{
+	display: none;
+}
